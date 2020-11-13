@@ -56,7 +56,7 @@
   </p>
 
   <h3 id="linktitle"></h3>
-  <p id="link"></p>
+  <p><a id="link" href=""></a></p>
 
   <script>
   function myFunction() {
@@ -78,7 +78,9 @@
     text += "&a=" + params[4];
     text += "&z=" + params[6];
     text += "&r=" + params[7];
-    document.getElementById("link").innerHTML = text;
+    let linkobj = document.getElementById("link");
+    linkobj.innerHTML = text;
+    linkobj.href = text;
     document.getElementById("linktitle").innerHTML = "Votre lien :";
   }
 
