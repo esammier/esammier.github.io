@@ -1,58 +1,91 @@
 <!DOCTYPE html>
 <html lang="fr">
+<head>
+  <link rel="preconnect" href="https://fonts.gstatic.com">
+  <link href="https://fonts.googleapis.com/css2?family=Raleway:ital,wght@0,400;0,700;0,800;1,400;1,700;1,800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="style.css">
+</head>
 <body>
 
-<form id="frm1" action="/action_page.php">
-  Nom : <input type="text" name="fname" value="Marty"><br>
-  Prénom : <input type="text" name="lname" value="Mc Fly"><br>
-  Date de naissance : <input type="date" name="bdate" value="01-01-2000"><br>
-  Lieu de naissance : <input type="text" name="bcity" value="Mos Espa"><br><br>
-  Adresse : <input type="text" name="addr" value="13 rue de l'Isère"><br>
-  Ville : <input type="text" name="ville" value="Gières"><br>
-  Code postal : <input type="number" name="codep" value="38100"><br><br>
+<header>
+  <h1>Générateur de lien pour le générateur d'attestation rapide</h1>
+</header>
+<section>
+  <p><i>Oui oui, vous avez bien lu, deux générateurs. Celui de Luko fait déjà le gros du travail, en générant une attestation PDF instantanément à partir de paramètres dans l'URL ; le mien génère cette URL à partir d'un formulaire basique.</i></p>
+  <h3>Utilisation</h3>
+  <p>Remplissez ce formulaire de la même façon que l'attestation que vous utilisez le plus souvent.<br>
+    Vous obtiendrez un long lien, que vous pourrez mettre en marque-page ou noter où vous voulez, et chaque fois que vous l'ouvrirez, vous obtiendrez une nouvelle attestation de déplacement tamponnée à la date et l'heure courante, sans rien avoir à saisir.
+  </p>
 
-  Motif : <select name="motif">
-    <option value="sport_animaux">Déplacement activité physique ou animaux, 1h & 1km</option>
-    <option value="travail">Déplacement professionnel ou pour formation</option>
-    <option value="achats">Achats de première nécessité</option>
-    <option value="santé">Santé, consultation ou examen médical</option>
-    <option value="famille">Motif familial impérieux</option>
-    <option value="handicap">Déplacement des personnes en situation de handicap</option>
-    <option value="convocation">Convocation judiciaire ou administrative</option>
-    <option value="missions">Mission d'intérêt général</option>
-    <option value="enfants">École et activités des enfants</option>
-  </select>
-</form>
+</section>
+<section>
+  <form id="frm1" action="">
+    <label for="">Nom : </label><br>
+    <input type="text" name="fname" placeholder="Bowie"><br>
+    <label for="">Prénom : </label><br>
+    <input type="text" name="lname" placeholder="David"><br>
+    <label for="">Date de naissance : </label><br>
+    <input type="date" name="bdate" placeholder="01-01-2000"><br>
+    <label for="">Lieu de naissance : </label><br>
+    <input type="text" name="bcity" placeholder="Brixton"><br><br>
+    <label for="">Adresse : </label><br>
+    <input type="text" name="addr" placeholder="Gemini IV Tin Can"><br>
+    <label for="">Ville : </label><br>
+    <input type="text" name="ville" placeholder="Space"><br>
+    <label for="">Code postal : </label><br>
+    <input type="number" name="codep" placeholder="00000"><br><br>
 
-<p>
-  <button onclick="myFunction()">Générer le lien direct</button>
-</p>
+    <label for="">Motif : </label><br>
+    <select name="motif">
+      <option value="sport_animaux">Déplacement activité physique ou animaux, 1h & 1km</option>
+      <option value="travail">Déplacement professionnel ou pour formation</option>
+      <option value="achats">Achats de première nécessité</option>
+      <option value="santé">Santé, consultation ou examen médical</option>
+      <option value="famille">Motif familial impérieux</option>
+      <option value="handicap">Déplacement des personnes en situation de handicap</option>
+      <option value="convocation">Convocation judiciaire ou administrative</option>
+      <option value="missions">Mission d'intérêt général</option>
+      <option value="enfants">École et activités des enfants</option>
+    </select>
+  </form>
 
-<p id="link"></p>
+  <p>
+    <button type="button" class="mainbutton" onclick="myFunction()">Générer le lien direct</button>
+  </p>
 
-<script>
-function myFunction() {
-  var x = document.getElementById("frm1");
-  var text = "https://covid.luko.eu/generate.html";
-  var params = [];
+  <h3 id="linktitle"></h3>
+  <p id="link"></p>
 
-  var i;
-  for (i = 0; i < x.length ;i++) {
-    params[i] = encodeURIComponent(x.elements[i].value);
+  <script>
+  function myFunction() {
+    var x = document.getElementById("frm1");
+    var text = "https://covid.luko.eu/generate.html";
+    var params = [];
+
+    var i;
+    for (i = 0; i < x.length ;i++) {
+      params[i] = encodeURIComponent(x.elements[i].value);
+    }
+    text += "#f=" + params[0];
+    text += "&l=" + params[1];
+    text += "&b=" + encodeURIComponent(params[2].replace(/-/g,"/"));
+    text += "&p=" + params[3];
+    text += "&c=" + params[5];
+    text += "&a=" + params[4];
+    text += "&z=" + params[6];
+    text += "&r=" + params[7];
+    document.getElementById("link").innerHTML = text;
+    document.getElementById("linktitle").innerHTML = "Votre lien :";
   }
-  text += "#f=" + params[0];
-  text += "&l=" + params[1];
-  text += "&b=" + encodeURIComponent(params[2].replace(/-/g,"/"));
-  text += "&p=" + params[3];
-  text += "&c=" + params[5];
-  text += "&a=" + params[4];
-  text += "&z=" + params[6];
-  text += "&r=" + params[7];
-  document.getElementById("link").innerHTML = text;
-}
 </script>
+</section>
 
+<footer>
+  <h3>Détails techniques</h3>
+  <p>Ceci est un petit formulaire sans prétention, bricolé en 1h à partir des <a href="https://www.w3schools.com/js/js_input_examples.asp">exemples W3Schools</a>, visant simplement à aider les gens à obtenir ce lien rapide sans avoir à étudier la syntaxe des <i>query string</i> ou l'échappement des caractères spéciaux. Aucune garantie sur le fonctionnement ou la gestion des erreurs n'est assurée.<br>
+    Le traitement des données est entièrement en JavaScript, donc en local, sans envoi à un quelconque serveur.
+  </p>
+  <p>Si vous lisez ce texte, c'est que vous avez sans doute utilisé mon générateur... merci !</p>
+</footer>
 </body>
 </html>
-https://covid.luko.eu/generate.html#f=Eliott&l=SAMMIER&b=14%2F04%2F2002&p=Grenoble&c=Gieres&a=13%20rue%20de%20l%20Isere&z=38610&r=sport_animaux
-https://covid.luko.eu/generate.html#f=Eliott&l=SAMMIER&b=14%2F04%2F2002&p=Grenoble&c=Gieres&a=13%20rue%20de%20l%20Isere&z=38610&r=sport_animaux

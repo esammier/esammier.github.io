@@ -1,0 +1,42 @@
+body {
+  margin: 0px;
+  font-family: Raleway, sans-serif;
+}
+
+section{
+  margin: 0px 10%;
+}
+.mainbutton{
+  color: black;
+  background-color: gold;
+  font-size: 20px;
+  padding: 10px;
+  font-family: Raleway;
+  margin: 20px;
+  border: 1px solid black;
+  border-radius: 25px;
+}
+
+.mainbutton:hover{
+  border: 2px solid black;
+  cursor: pointer;
+  font-weight: bold;
+}
+
+#link{
+  font-family: monospace;
+  font-size: 1.3em;
+}
+
+input{
+  margin: 10px;
+}
+
+header, footer{
+  padding: 20px 10%;
+  background-color: gold;
+}
+
+footer{
+  margin: 50% 0px 0px 0px;
+}
