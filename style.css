@@ -8,7 +8,7 @@ section{
 }
 .mainbutton{
   color: black;
-  background-color: gold;
+  background-color: #ffa700;
   font-size: 20px;
   padding: 10px;
   font-family: Raleway;
@@ -34,7 +34,7 @@ input{
 
 header, footer{
   padding: 20px 10%;
-  background-color: gold;
+  background-color: #ffa700;
 }
 
 footer{
