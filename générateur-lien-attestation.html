@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html>
+<body>
+
+<form id="frm1" action="/action_page.php">
+  Nom : <input type="text" name="fname" value="Marty"><br>
+  Prénom : <input type="text" name="lname" value="Mc Fly"><br>
+  Date de naissance : <input type="date" name="bdate" value="01-01-2000"><br>
+  Lieu de naissance : <input type="text" name="bcity" value="Mos Espa"><br><br>
+  Adresse : <input type="text" name="addr" value="13 rue de l'Isère"><br>
+  Ville : <input type="text" name="ville" value="Gières"><br>
+  Code postal : <input type="number" name="codep" value="38100"><br><br>
+
+  Motif : <select name="motif">
+    <option value="sport_animaux">Déplacement activité physique ou animaux, 1h & 1km</option>
+    <option value="travail">Déplacement professionnel ou pour formation</option>
+    <option value="achats">Achats de première nécessité</option>
+    <option value="santé">Santé, consultation ou examen médical</option>
+    <option value="famille">Motif familial impérieux</option>
+    <option value="handicap">Déplacement des personnes en situation de handicap</option>
+    <option value="convocation">Convocation judiciaire ou administrative</option>
+    <option value="missions">Mission d'intérêt général</option>
+    <option value="enfants">École et activités des enfants</option>
+  </select>
+</form>
+
+<p>
+  <button onclick="myFunction()">Générer le lien direct</button>
+</p>
+
+<p id="link"></p>
+
+<script>
+function myFunction() {
+  var x = document.getElementById("frm1");
+  var text = "https://covid.luko.eu/generate.html";
+  var params = [];
+
+  var i;
+  for (i = 0; i < x.length ;i++) {
+    params[i] = encodeURIComponent(x.elements[i].value);
+  }
+  text += "#f=" + params[0];
+  text += "&l=" + params[1];
+  text += "&b=" + encodeURIComponent(params[2].replace(/-/g,"/"));
+  text += "&p=" + params[3];
+  text += "&c=" + params[5];
+  text += "&a=" + params[4];
+  text += "&z=" + params[6];
+  text += "&r=" + params[7];
+  document.getElementById("link").innerHTML = text;
+}
+</script>
+
+</body>
+</html>
+https://covid.luko.eu/generate.html#f=Eliott&l=SAMMIER&b=14%2F04%2F2002&p=Grenoble&c=Gieres&a=13%20rue%20de%20l%20Isere&z=38610&r=sport_animaux
+https://covid.luko.eu/generate.html#f=Eliott&l=SAMMIER&b=14%2F04%2F2002&p=Grenoble&c=Gieres&a=13%20rue%20de%20l%20Isere&z=38610&r=sport_animaux
