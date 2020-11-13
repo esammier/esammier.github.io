@@ -70,7 +70,9 @@
     }
     text += "#f=" + params[0];
     text += "&l=" + params[1];
-    text += "&b=" + encodeURIComponent(params[2].replace(/-/g,"/"));
+    let dateobj = new Date(x.elements[2].value);
+    let datef = leadingZero(dateobj.getDate()) + "%2F" + leadingZero(dateobj.getMonth()) + "%2F" + dateobj.getFullYear();
+    text += "&b=" + datef;
     text += "&p=" + params[3];
     text += "&c=" + params[5];
     text += "&a=" + params[4];
@@ -78,6 +80,15 @@
     text += "&r=" + params[7];
     document.getElementById("link").innerHTML = text;
     document.getElementById("linktitle").innerHTML = "Votre lien :";
+  }
+
+  function leadingZero(s) {
+    s = s.toString();
+    if (s.length < 2) {
+      return "0"+s;
+    } else {
+      return s;
+    }
   }
 </script>
 </section>
