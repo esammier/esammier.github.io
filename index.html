@@ -6,6 +6,7 @@
   <link rel="preconnect" href="https://fonts.gstatic.com">
   <link href="https://fonts.googleapis.com/css2?family=Raleway:ital,wght@0,400;0,700;0,800;1,400;1,700;1,800&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="style.css">
+  <link rel="icon" href="favicon.ico">
 </head>
 <body>
 
@@ -27,7 +28,7 @@
     <label for="">Prénom : </label><br>
     <input type="text" name="lname" placeholder="David"><br>
     <label for="">Date de naissance : </label><br>
-    <input type="date" name="bdate" placeholder="01-01-2000"><br>
+    <input type="date" name="bdate" placeholder="01/01/1970"><br>
     <label for="">Lieu de naissance : </label><br>
     <input type="text" name="bcity" placeholder="Brixton"><br><br>
     <label for="">Adresse : </label><br>
@@ -70,8 +71,11 @@
     }
     text += "#f=" + params[0];
     text += "&l=" + params[1];
+    console.log("Raw data from date field : '" + x.elements[2].value + "'");
     let dateobj = new Date(x.elements[2].value);
-    let datef = leadingZero(dateobj.getDate()) + "%2F" + leadingZero(dateobj.getMonth()) + "%2F" + dateobj.getFullYear();
+    console.log("Converted to date object : " + dateobj);
+    let datef = leadingZero(dateobj.getDate()) + "%2F" + leadingZero(dateobj.getMonth()+1) + "%2F" + dateobj.getFullYear();
+    console.log("Final date string w/ escaped chars : '" + datef + "'");
     text += "&b=" + datef;
     text += "&p=" + params[3];
     text += "&c=" + params[5];
