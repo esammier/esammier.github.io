@@ -1,110 +1,38 @@
 <!DOCTYPE html>
-<html lang="fr" dir="ltr">
+<html lang="en">
 <head>
-  <meta charset="utf-8">
-  <title>Générateur de lien pour générateur d'attestation rapide - GitHub Pages</title>
-  <link rel="preconnect" href="https://fonts.gstatic.com">
-  <link href="https://fonts.googleapis.com/css2?family=Raleway:ital,wght@0,400;0,700;0,800;1,400;1,700;1,800&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="style.css">
-  <link rel="icon" href="favicon.ico">
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<title>Home page</title>
+	<link rel="icon" href="favicon.ico">
+	<style type="text/css">
+		body {
+			font-family: sans-serif;
+			background-color: #333;
+			color: #ccc;
+			display: flex;
+			flex-direction: column;
+			justify-content: center;
+			align-items: center;
+			height: 100vh;
+			margin: 0px;
+		}
+		a {
+			color: #ccc;
+		}
+		h1 a {
+			text-decoration: unset;
+		}
+	</style>
 </head>
 <body>
-
-<header>
-  <h1>Générateur de lien pour le générateur d'attestation rapide</h1>
-</header>
-<section>
-  <p><i>Oui oui, vous avez bien lu, deux générateurs. Celui de Luko fait déjà le gros du travail, en générant une attestation PDF instantanément à partir de paramètres dans l'URL ; le mien génère cette URL à partir d'un formulaire basique.</i></p>
-  <h3>Utilisation</h3>
-  <p>Remplissez ce formulaire de la même façon que l'attestation que vous utilisez le plus souvent.<br>
-    Vous obtiendrez un long lien, que vous pourrez mettre en marque-page ou noter où vous voulez, et chaque fois que vous l'ouvrirez, vous obtiendrez une nouvelle attestation de déplacement tamponnée à la date et l'heure courante, sans rien avoir à saisir.
-  </p>
-
-</section>
-<section>
-  <form id="frm1" action="">
-    <label for="">Nom : </label><br>
-    <input type="text" name="fname" placeholder="Bowie"><br>
-    <label for="">Prénom : </label><br>
-    <input type="text" name="lname" placeholder="David"><br>
-    <label for="">Date de naissance : </label><br>
-    <input type="date" name="bdate" placeholder="01/01/1970"><br>
-    <label for="">Lieu de naissance : </label><br>
-    <input type="text" name="bcity" placeholder="Brixton"><br><br>
-    <label for="">Adresse : </label><br>
-    <input type="text" name="addr" placeholder="Gemini IV Tin Can"><br>
-    <label for="">Ville : </label><br>
-    <input type="text" name="ville" placeholder="Space"><br>
-    <label for="">Code postal : </label><br>
-    <input type="number" name="codep" placeholder="00000"><br><br>
-
-    <label for="">Motif : </label><br>
-    <select name="motif">
-      <option value="sport_animaux">Déplacement activité physique ou animaux, 1h & 1km</option>
-      <option value="travail">Déplacement professionnel ou pour formation</option>
-      <option value="achats">Achats de première nécessité</option>
-      <option value="sante">Santé, consultation ou examen médical</option>
-      <option value="famille">Motif familial impérieux</option>
-      <option value="handicap">Déplacement des personnes en situation de handicap</option>
-      <option value="convocation">Convocation judiciaire ou administrative</option>
-      <option value="missions">Mission d'intérêt général</option>
-      <option value="enfants">École et activités des enfants</option>
-    </select>
-  </form>
-
-  <p>
-    <button type="button" class="mainbutton" onclick="myFunction()">Générer le lien direct</button>
-  </p>
-
-  <h3 id="linktitle"></h3>
-  <p><a id="link" href=""></a></p>
-
-  <script>
-  function myFunction() {
-    var x = document.getElementById("frm1");
-    var text = "https://covid.luko.eu/generate.html";
-    var params = [];
-
-    var i;
-    for (i = 0; i < x.length ;i++) {
-      params[i] = encodeURIComponent(x.elements[i].value);
-    }
-    text += "#f=" + params[0];
-    text += "&l=" + params[1];
-    console.log("Raw data from date field : '" + x.elements[2].value + "'");
-    let dateobj = new Date(x.elements[2].value);
-    console.log("Converted to date object : " + dateobj);
-    let datef = leadingZero(dateobj.getDate()) + "%2F" + leadingZero(dateobj.getMonth()+1) + "%2F" + dateobj.getFullYear();
-    console.log("Final date string w/ escaped chars : '" + datef + "'");
-    text += "&b=" + datef;
-    text += "&p=" + params[3];
-    text += "&c=" + params[5];
-    text += "&a=" + params[4];
-    text += "&z=" + params[6];
-    text += "&r=" + params[7];
-    let linkobj = document.getElementById("link");
-    linkobj.innerHTML = text;
-    linkobj.href = text;
-    document.getElementById("linktitle").innerHTML = "Votre lien :";
-  }
-
-  function leadingZero(s) {
-    s = s.toString();
-    if (s.length < 2) {
-      return "0"+s;
-    } else {
-      return s;
-    }
-  }
-</script>
-</section>
-
-<footer>
-  <h3>Détails techniques</h3>
-  <p>Ceci est un petit formulaire sans prétention, bricolé en 1h à partir des <a href="https://www.w3schools.com/js/js_input_examples.asp">exemples W3Schools</a>, visant simplement à aider les gens à obtenir ce lien rapide sans avoir à étudier la syntaxe des <i>query string</i> ou l'échappement des caractères spéciaux. Aucune garantie sur le fonctionnement ou la gestion des erreurs n'est assurée.<br>
-    Le traitement des données est entièrement en JavaScript, donc en local, sans envoi à un quelconque serveur.
-  </p>
-  <p>Si vous lisez ce texte, c'est que vous avez sans doute utilisé mon générateur... merci !</p>
-</footer>
+	<h1><a href="https://en.wikipedia.org/wiki/Phrases_from_The_Hitchhiker%27s_Guide_to_the_Galaxy#Mostly_Harmless" target="_blank">Mostly Harmless</a></h1>
+	<div class="subtitle">These Github Pages are not hosting anything at the moment. Here's
+		<a href="https://en.wikipedia.org/wiki/Main_Page" target="_blank">some</a>
+		<a href="https://datatracker.ietf.org/doc/html/rfc1983" target="_blank">fun</a>
+		<a href="https://youtu.be/e9DfSCk-6Ko" target="_blank">stuff</a>
+		<a href="https://stackexchange.com/questions?tab=hot" target="_blank">in case</a>
+		<a href="https://www.benjoffe.com/code/games/torus/" target="_blank">you're bored</a>.
+	</div>
 </body>
 </html>
