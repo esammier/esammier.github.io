@@ -1,1 +1,1 @@
-TickingFeather's personal pages, for quick and easy hosting
+My personal GitHub pages for quick and easy hosting
